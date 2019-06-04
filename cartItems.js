@@ -7,7 +7,7 @@ const cart = express.Router();
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "postgres",
-  password: "",
+  password: "MA08rD07on",
   host: "localhost",
   port: 5432,
   database: "ExpressShopDB",

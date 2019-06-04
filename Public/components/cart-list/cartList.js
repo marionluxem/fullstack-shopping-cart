@@ -81,13 +81,10 @@ function ItemList (CartService) {
 }
   
 
-  ctrl.updateCartItem = (count) => {
-    let item  = {
-        count: count,
-    }
-    console.log(item.id);
+  ctrl.updateCartItem = (item,count) => {
+    item.count = count;
 
-    CartService.updateItem(JSON.stringify(item))
+    CartService.updateItem(item);
     CartService.reloadData();
 }
 
@@ -137,8 +134,8 @@ angular.module("CartApp")
       <br>
       <p>count: {{cartData.count}}</p>
       <form>
-        <input type="number"/>
-        <button data-count="{{cartData.count}}" ng-click="$ctrl.updateCartItem(cartData.count)">Update</button>
+        <input ng-model="count" type="number"/>
+        <button data-count="{{cartData.count}}" ng-click="$ctrl.updateCartItem(cartData, count)">Update</button>
       </form>
       <br>
       <button data-product="{{cartData.product}}" data-id="{{cartData.id}}" ng-click="$ctrl.deleteCartItem(cartData.id)">Remove</button>
